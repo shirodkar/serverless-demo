@@ -12,6 +12,13 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          resources:
+            limits:
+              cpu: 400m
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 512Mi
   traffic:
     - latestRevision: true
       percent: 100
