@@ -5,6 +5,7 @@ metadata:
 spec:
   template:
     spec:
+      containerConcurrency: 1
       containers:
         - image: 'quay.io/openshiftroadshow/parksmap:latest'
           name: parksmap
