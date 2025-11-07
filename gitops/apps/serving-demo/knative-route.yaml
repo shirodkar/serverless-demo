@@ -1,9 +1,0 @@
-apiVersion: serving.knative.dev/v1
-kind: Route
-metadata:
-  name: parksmap
-spec:
-  traffic:
-    - configurationName: parksmap
-      latestRevision: true
-      percent: 100
