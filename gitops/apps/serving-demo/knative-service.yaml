@@ -1,0 +1,16 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: parksmap
+spec:
+  template:
+    spec:
+      containers:
+        - image: 'quay.io/openshiftroadshow/parksmap:latest'
+          name: parksmap
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+  traffic:
+    - latestRevision: true
+      percent: 100

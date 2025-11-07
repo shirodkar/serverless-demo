@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Route
+metadata:
+  name: parksmap
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: parksmap
+spec:
+  traffic:
+    - configurationName: parksmap
+      latestRevision: true
+      percent: 100

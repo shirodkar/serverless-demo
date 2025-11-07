@@ -1,0 +1,14 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: openshift-serverless
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: knative-serving
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: knative-eventing
