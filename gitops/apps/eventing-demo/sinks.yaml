@@ -1,0 +1,13 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: event-display
+spec:
+  template:
+    spec:
+      containerConcurrency: 0
+      containers:
+        - image: quay.io/openshift-knative/showcase
+  traffic:
+    - latestRevision: true
+      percent: 100
