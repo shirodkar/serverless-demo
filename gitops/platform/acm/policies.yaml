@@ -4,6 +4,7 @@ metadata:
   name: install-operators
   namespace: open-cluster-management-global-set
 spec:
+  disabled: false
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1beta1
