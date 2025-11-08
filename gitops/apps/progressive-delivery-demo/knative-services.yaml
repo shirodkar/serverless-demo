@@ -21,14 +21,9 @@ spec:
               memory: 512Mi
   traffic:
     - latestRevision: false
-      percent: 100
+      percent: 0
       tag: blue
       revisionName: rollouts-demo-00001
     - latestRevision: true
-      percent: 0
+      percent: 100
       tag: green
-
-# BLUE-GREEN DEPLOYMENT
-# kn service update rollouts-demo --tag=rollouts-demo-00001=blue --traffic blue=100 --tag=@latest=latest --traffic latest=0
-# kn service update rollouts-demo --traffic blue=100 --tag=@latest=latest --traffic latest=0 --tag=rollouts-demo-00001=green --traffic green=0
-# kn service update rollouts-demo --traffic blue=0 --traffic latest=0 --tag=rollouts-demo-00001=green --traffic green=0
