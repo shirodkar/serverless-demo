@@ -5,7 +5,7 @@ metadata:
 spec:
   template:
     spec:
-      containerConcurrency: 0
+      containerConcurrency: 1
       containers:
         - image: 'quay.io/openshiftdemos/rollouts-demo:blue'
           name: rollouts-demo
@@ -14,11 +14,11 @@ spec:
               protocol: TCP
           resources:
             limits:
-              cpu: 400m
-              memory: 1Gi
-            requests:
               cpu: 200m
               memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
   traffic:
     - latestRevision: true
       percent: 100
