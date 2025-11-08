@@ -3,7 +3,7 @@ kind: PingSource
 metadata:
   name: ping-source
 spec:
-  data: Hello
+  data: Hello from Ping Source!
   schedule: '* * * * *'
   sink:
     ref:
