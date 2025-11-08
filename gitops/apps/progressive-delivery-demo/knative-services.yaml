@@ -21,9 +21,9 @@ spec:
               memory: 512Mi
   traffic:
     - latestRevision: false
-      percent: 80
+      percent: 20
       tag: blue
       revisionName: rollouts-demo-00003
     - latestRevision: true
-      percent: 20
+      percent: 80
       tag: green
