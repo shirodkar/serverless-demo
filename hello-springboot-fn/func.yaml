@@ -1,8 +1,7 @@
 specVersion: 0.36.0
 name: hello-springboot-fn
 runtime: springboot
-created: 2025-11-09T20:23:49.446466-05:00
-invoke: cloudevent
+created: 2025-11-10T08:23:42.777112-05:00
 build:
   buildEnvs:
   - name: BP_NATIVE_IMAGE

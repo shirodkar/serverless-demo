@@ -2,7 +2,7 @@
 
 Welcome to your new Function project!
 
-This sample project contains a single function based on Spring Cloud Function: `echo.EchoFunction`, which returns an echo of the data passed via CloudEvents.
+This sample project contains a single function based on Spring Cloud Function: `functions.CloudFunctionApplication.echo()`, which returns an echo of the data passed via HTTP request.
 
 ## Local execution
 
@@ -84,13 +84,6 @@ func deploy --build=false
 
 ## Function invocation
 
-Spring Cloud Functions allows you to route CloudEvents to specific functions using the `Ce-Type` attribute.
-For this example, the CloudEvent is routed to the `echo` function. You can define multiple functions inside this project
-and then use the `Ce-Type` attribute to route different CloudEvents to different Functions.
-Check the `src/main/resources/application.properties` file for the `functionRouter` configurations.
-Notice that you can also use `path-based` routing and send the any event type by specifying the function path,
-for this example: "$URL/echo".
-
 For the examples below, please be sure to set the `URL` variable to the route of your function.
 
 You get the route by following command.
@@ -112,75 +105,51 @@ export URL=$(kn service describe $(basename $PWD) -ourl)
 
 ### func
 
-Using `func invoke` command with CloudEvents `Ce-Type` routing:
+Using `func invoke` command with Path-Based routing:
 
 ```shell script
-func invoke --type "echo"
+func invoke --target "$URL/echo" --data "$(whoami)"
 ```
 
-Using Path-Based routing:
+If your function class only contains one function, then you can leave out the target path:
 
 ```shell script
-func invoke --target "$URL/echo"
+func invoke --data "$(whoami)"
 ```
 
 ### cURL
 
-Using CloudEvents `Ce-Type` routing:
-
-```shell script
-curl -v "$URL/" \
-  -H "Content-Type:application/json" \
-  -H "Ce-Id:1" \
-  -H "Ce-Subject:Echo" \
-  -H "Ce-Source:cloud-event-example" \
-  -H "Ce-Type:echo" \
-  -H "Ce-Specversion:1.0" \
-  -w "\n" \
-  -d "hello"
-```
-
-Using Path-Based routing:
-
 ```shell script
 curl -v "$URL/echo" \
-  -H "Content-Type:application/json" \
-  -H "Ce-Id:1" \
-  -H "Ce-Subject:Echo" \
-  -H "Ce-Source:cloud-event-example" \
-  -H "Ce-Type:echo" \
-  -H "Ce-Specversion:1.0" \
+  -H "Content-Type:text/plain" \
   -w "\n" \
-  -d "hello"
+  -d "$(whoami)"
+```
+
+If your function class only contains one function, then you can leave out the target path:
+
+```shell script
+curl -v "$URL" \
+  -H "Content-Type:text/plain" \
+  -w "\n" \
+  -d "$(whoami)"
 ```
 
 ### HTTPie
 
-Using CloudEvents `Ce-Type` routing:
 ```shell script
-echo hello | http -v "$URL/" \
-  Content-Type:application/json \
-  Ce-Id:1 \
-  Ce-Subject:Echo \
-  Ce-Source:cloud-event-example \
-  Ce-Type:MyEvent \
-  Ce-Specversion:1.0
+echo "$(whoami)" | http -v "$URL/echo"
 ```
 
-Using Path-Based routing:
+If your function class only contains one function, then you can leave out the target path:
+
 ```shell script
-echo hello | http -v "$URL/echo" \
-  Content-Type:application/json \
-  Ce-Id:1 \
-  Ce-Subject:Echo \
-  Ce-Source:cloud-event-example \
-  Ce-Type:MyEvent \
-  Ce-Specversion:1.0
+echo "$(whoami)" | http -v "$URL"
 ```
 
 ## Cleanup
 
-To remove the deployed function from your cluster, run:
+To clean the deployed function run:
 
 ```shell
 func delete
