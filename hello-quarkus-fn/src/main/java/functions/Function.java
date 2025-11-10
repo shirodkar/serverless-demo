@@ -21,7 +21,7 @@ public class Function {
     DataSource dataSource;
 
     /**
-     * Use the Quarkus Funqy extension for our function. This function simply echoes its input
+     * Use the Quarkus Funqy extension for our function. This function provides names of customers in the database.
      * @param input a Java bean
      * @return a Java bean
      * @throws SQLException 
