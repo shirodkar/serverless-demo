@@ -12,3 +12,18 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: knative-eventing
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: demo-serving
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: demo-eventing
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: demo-progressive-delivery
