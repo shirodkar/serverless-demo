@@ -27,3 +27,8 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-progressive-delivery
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: kafka
