@@ -1,0 +1,11 @@
+apiVersion: console.streamshub.github.com/v1alpha1
+kind: Console
+metadata:
+  name: example-console
+  namespace: openshift-operators
+spec:
+  hostname: my-console.<cluster_domain>
+  kafkaClusters:
+    - listener: plain
+      name: my-cluster
+      namespace: kafka
