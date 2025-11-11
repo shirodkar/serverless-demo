@@ -9,4 +9,17 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: event-display
+      name: direct-sink
+---
+apiVersion: sources.knative.dev/v1
+kind: PingSource
+metadata:
+  name: ping-channel-source
+spec:
+  data: Hello from Ping Source!
+  schedule: '* * * * *'
+  sink:
+    ref:
+      apiVersion: messaging.knative.dev/v1
+      kind: Channel
+      name: ping-channel

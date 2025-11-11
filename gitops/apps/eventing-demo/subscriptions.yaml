@@ -1,0 +1,29 @@
+apiVersion: messaging.knative.dev/v1
+kind: Subscription
+metadata:
+  name: subscription-a
+spec:
+  channel:
+    apiVersion: messaging.knative.dev/v1
+    kind: Channel
+    name: ping-channel
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: channel-sink-a
+---
+apiVersion: messaging.knative.dev/v1
+kind: Subscription
+metadata:
+  name: subscription-b
+spec:
+  channel:
+    apiVersion: messaging.knative.dev/v1
+    kind: Channel
+    name: ping-channel
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: channel-sink-b
