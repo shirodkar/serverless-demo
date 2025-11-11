@@ -4,4 +4,33 @@ metadata:
   name: knative-eventing
   namespace: knative-eventing
 spec:
+  config:
+    config-br-defaults:
+      default-br-config: |
+        clusterDefault:
+          brokerClass: Kafka
+          apiVersion: v1
+          kind: ConfigMap
+          name: kafka-broker-config
+          namespace: knative-eventing
+        namespaceDefaults:
+          demo-eventing:
+            brokerClass: MTChannelBasedBroker
+            apiVersion: v1
+            kind: ConfigMap
+            name: config-br-default-channel
+            namespace: knative-eventing
+    default-ch-webhook:
+      default-ch-config: |
+        clusterDefault:
+          apiVersion: messaging.knative.dev/v1
+          kind: InMemoryChannel
+        namespaceDefaults:
+          demo-eventing:
+            apiVersion: messaging.knative.dev/v1beta1
+            kind: KafkaChannel
+            spec:
+              numPartitions: 1
+              replicationFactor: 1
+  defaultBrokerClass: Kafka
   registry: {}
