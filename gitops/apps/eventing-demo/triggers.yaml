@@ -1,0 +1,29 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: trigger-a
+spec:
+  broker: broker-ab
+  filter:
+    attributes:
+      type: a
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: trigger-sink-a
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: trigger-b
+spec:
+  broker: broker-ab
+  filter:
+    attributes:
+      type: b
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: trigger-sink-b
