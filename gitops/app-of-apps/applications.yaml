@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-eventing
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: demo-eventing
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/apps/eventing-demo
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-serving
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: demo-serving
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/apps/serving-demo
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-progressive-delivery
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: demo-progressive-delivery
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/apps/progressive-delivery-demo
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
