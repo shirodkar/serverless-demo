@@ -14,7 +14,7 @@ spec:
           name: kafka-broker-config
           namespace: knative-eventing
         namespaceDefaults:
-          demo-eventing:
+          mt-channel-eventing:
             brokerClass: MTChannelBasedBroker
             apiVersion: v1
             kind: ConfigMap
