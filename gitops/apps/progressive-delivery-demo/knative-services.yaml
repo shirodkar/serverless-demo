@@ -20,8 +20,8 @@ spec:
               cpu: 100m
               memory: 256Mi
   traffic:
-    - latestRevision: true
-      percent: 0
+    - revisionName: rollouts-demo-00001
+      percent: 100
       tag: blue
     - latestRevision: true
       percent: 0
