@@ -2,7 +2,7 @@ specVersion: 0.36.0
 name: hello-quarkus-fn
 runtime: quarkus
 registry: quay.io/rh_ee_sshirodk
-namespace: a-test-functions
+namespace: demo-functions
 created: 2025-11-08T14:25:17.904469-05:00
 build:
   git:
@@ -20,5 +20,5 @@ build:
   - name: S2I_SOURCE_DEPLOYMENTS_FILTER
     value: lib quarkus-run.jar app quarkus
 deploy:
-  namespace: a-test-functions
-  image: image-registry.openshift-image-registry.svc:5000/a-test-functions/hello-quarkus-fn:latest
+  namespace: demo-functions
+  image: image-registry.openshift-image-registry.svc:5000/demo-functions/hello-quarkus-fn:latest
