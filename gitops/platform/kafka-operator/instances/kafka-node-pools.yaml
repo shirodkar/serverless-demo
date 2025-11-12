@@ -18,7 +18,7 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
-  name: my-broker-pool
+  name: my-controller-pool
   namespace: kafka
 spec:
   replicas: 3
