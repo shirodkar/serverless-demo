@@ -31,7 +31,7 @@ metadata:
 spec:
   bootstrapServers:
     - 'my-cluster-kafka-bootstrap.kafka.svc:9092'
-  consumerGroup: my-consumer-group
+  consumerGroup: demo-consumer-group
   consumers: 1
   initialOffset: latest
   net:
