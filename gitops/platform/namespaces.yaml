@@ -32,3 +32,8 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: kafka
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: kafka-console

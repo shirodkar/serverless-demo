@@ -2,7 +2,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: amq-streams
-  namespace: openshift-operators
+  namespace: kafka
 spec:
   channel: stable
   installPlanApproval: Automatic
@@ -14,7 +14,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: amq-streams-console
-  namespace: openshift-operators
+  namespace: kafka-console
 spec:
   channel: alpha
   installPlanApproval: Automatic

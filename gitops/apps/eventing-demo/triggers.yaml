@@ -6,7 +6,7 @@ spec:
   broker: broker-kafka-ping
   filter:
     attributes:
-      type: kafka.triggers.eventing.knative.dev
+      type: dev.knative.kafka.event
   subscriber:
     ref:
       apiVersion: serving.knative.dev/v1
