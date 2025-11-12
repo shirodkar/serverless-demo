@@ -1,13 +1,9 @@
 specVersion: 0.36.0
-name: hello-quarkus-fn
+name: my-fn
 runtime: quarkus
 registry: quay.io/rh_ee_sshirodk
-created: 2025-11-08T14:25:17.904469-05:00
+created: 2025-11-11T22:33:22.418487-05:00
 build:
-  git:
-    url: https://github.com/shirodkar/serverless-demo.git
-    revision: main
-    contextDir: hello-quarkus-fn
   builder: s2i
   buildEnvs:
   - name: BP_NATIVE_IMAGE
@@ -18,5 +14,3 @@ build:
     value: target/quarkus-app
   - name: S2I_SOURCE_DEPLOYMENTS_FILTER
     value: lib quarkus-run.jar app quarkus
-deploy:
-  namespace: demo-functions

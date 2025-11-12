@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hello-quarkus-fn
+spec:
+  template:
+    spec:
+      containerConcurrency: 0
+      containers:
+        - name: hello-quarkus-fn
+          image: 'quay.io/rh_ee_sshirodk/hello-quarkus-fn'
+          livenessProbe:
+            httpGet:
+              path: /health/liveness
+              port: 0
+          readinessProbe:
+            httpGet:
+              path: /health/readiness
+              port: 0
+            successThreshold: 1
+          resources: {}
+  traffic:
+    - latestRevision: true
+      percent: 100

@@ -23,3 +23,44 @@ spec:
       apiVersion: messaging.knative.dev/v1
       kind: Channel
       name: ping-channel
+---
+apiVersion: sources.knative.dev/v1
+kind: KafkaSource
+metadata:
+  name: kafka-broker-source
+spec:
+  bootstrapServers:
+    - 'my-cluster-kafka-bootstrap.kafka.svc:9092'
+  consumerGroup: my-consumer-group
+  consumers: 1
+  initialOffset: latest
+  net:
+    sasl:
+      password: {}
+      type: {}
+      user: {}
+    tls:
+      caCert: {}
+      cert: {}
+      key: {}
+  ordering: ordered
+  sink:
+    ref:
+      apiVersion: eventing.knative.dev/v1
+      kind: Broker
+      name: broker-kafka-ping
+  topics:
+    - eventing-demo-topic
+---
+apiVersion: sources.knative.dev/v1
+kind: PingSource
+metadata:
+  name: ping-broker-source
+spec:
+  data: Hello from Ping Source!
+  schedule: '* * * * *'
+  sink:
+    ref:
+      apiVersion: eventing.knative.dev/v1
+      kind: Broker
+      name: broker-kafka-ping

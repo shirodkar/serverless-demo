@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: direct-sink
+  name: sink-direct
 spec:
   template:
     spec:
@@ -15,7 +15,7 @@ spec:
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: subscription-sink-a
+  name: sink-subscription-a
 spec:
   template:
     spec:
@@ -29,7 +29,7 @@ spec:
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: subscription-sink-b
+  name: sink-subscription-b
 spec:
   template:
     spec:
@@ -43,7 +43,7 @@ spec:
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: trigger-sink-a
+  name: sink-trigger-kafka
 spec:
   template:
     spec:
@@ -57,7 +57,7 @@ spec:
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: trigger-sink-b
+  name: sink-trigger-ping
 spec:
   template:
     spec:

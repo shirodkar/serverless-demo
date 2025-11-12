@@ -1,29 +1,29 @@
 apiVersion: eventing.knative.dev/v1
 kind: Trigger
 metadata:
-  name: trigger-a
+  name: trigger-kafka
 spec:
-  broker: broker-ab
+  broker: broker-kafka-ping
   filter:
     attributes:
-      type: a
+      type: kafka.triggers.eventing.knative.dev
   subscriber:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: trigger-sink-a
+      name: trigger-sink-kafka
 ---
 apiVersion: eventing.knative.dev/v1
 kind: Trigger
 metadata:
-  name: trigger-b
+  name: trigger-ping
 spec:
-  broker: broker-ab
+  broker: broker-kafka-ping
   filter:
     attributes:
-      type: b
+      type: dev.knative.sources.ping
   subscriber:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: trigger-sink-b
+      name: trigger-sink-ping
