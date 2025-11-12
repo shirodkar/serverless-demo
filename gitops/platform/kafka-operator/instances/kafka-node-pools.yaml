@@ -3,6 +3,8 @@ kind: KafkaNodePool
 metadata:
   name: my-broker-pool
   namespace: kafka
+  labels:
+    strimzi.io/cluster: my-cluster
 spec:
   replicas: 3
   roles:
@@ -20,6 +22,8 @@ kind: KafkaNodePool
 metadata:
   name: my-controller-pool
   namespace: kafka
+  labels:
+    strimzi.io/cluster: my-cluster
 spec:
   replicas: 3
   roles:
