@@ -9,7 +9,7 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: direct-sink
+      name: sink-direct
 ---
 apiVersion: sources.knative.dev/v1
 kind: PingSource

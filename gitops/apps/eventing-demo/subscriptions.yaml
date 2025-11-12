@@ -11,7 +11,7 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: subscription-sink-a
+      name: sink-subscription-a
 ---
 apiVersion: messaging.knative.dev/v1
 kind: Subscription
@@ -26,4 +26,4 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: subscription-sink-b
+      name: sink-subscription-b

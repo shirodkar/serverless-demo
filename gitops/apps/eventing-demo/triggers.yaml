@@ -11,7 +11,7 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: trigger-sink-kafka
+      name: sink-trigger-kafka
 ---
 apiVersion: eventing.knative.dev/v1
 kind: Trigger
@@ -26,4 +26,4 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1
       kind: Service
-      name: trigger-sink-ping
+      name: sink-trigger-ping
