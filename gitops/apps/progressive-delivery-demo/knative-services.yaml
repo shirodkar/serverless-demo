@@ -97,38 +97,6 @@
 ###
 # Canary - Rollout 20% 'green' version to Production
 ###
-apiVersion: serving.knative.dev/v1
-kind: Service
-metadata:
-  name: rollouts-demo
-spec:
-  template:
-    spec:
-      containerConcurrency: 1
-      containers:
-        - image: 'quay.io/openshiftdemos/rollouts-demo:green'
-          name: rollouts-demo
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources:
-            limits:
-              cpu: 200m
-              memory: 512Mi
-            requests:
-              cpu: 100m
-              memory: 256Mi
-  traffic:
-    - revisionName: rollouts-demo-00001
-      percent: 80
-      tag: blue
-    - latestRevision: true
-      percent: 20
-      tag: green
-
-###
-# Canary - Rollout 80% 'green' version to Production
-###
 # apiVersion: serving.knative.dev/v1
 # kind: Service
 # metadata:
@@ -152,11 +120,43 @@ spec:
 #               memory: 256Mi
 #   traffic:
 #     - revisionName: rollouts-demo-00001
-#       percent: 20
+#       percent: 80
 #       tag: blue
 #     - latestRevision: true
-#       percent: 80
+#       percent: 20
 #       tag: green
+
+###
+# Canary - Rollout 80% 'green' version to Production
+###
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: rollouts-demo
+spec:
+  template:
+    spec:
+      containerConcurrency: 1
+      containers:
+        - image: 'quay.io/openshiftdemos/rollouts-demo:green'
+          name: rollouts-demo
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+  traffic:
+    - revisionName: rollouts-demo-00001
+      percent: 20
+      tag: blue
+    - latestRevision: true
+      percent: 80
+      tag: green
 
 ###
 # Canary - Rollout 100% 'green' version to Production
