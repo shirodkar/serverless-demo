@@ -1,0 +1,55 @@
+apiVersion: sonataflow.org/v1alpha08
+kind: SonataFlow
+metadata:
+  annotations:
+    sonataflow.org/description: Greeting example on k8s!
+    sonataflow.org/profile: preview
+    sonataflow.org/version: 0.0.1
+  name: greeting
+spec:
+  flow:
+    functions:
+      - name: greetFunction
+        operation: sysout
+        type: custom
+    start:
+      stateName: ChooseOnLanguage
+    states:
+      - dataConditions:
+          - condition: '${ .language == "English" }'
+            transition:
+              nextState: GreetInEnglish
+          - condition: '${ .language == "Spanish" }'
+            transition:
+              nextState: GreetInSpanish
+        defaultCondition:
+          transition:
+            nextState: GreetInEnglish
+        name: ChooseOnLanguage
+        type: switch
+      - data:
+          greeting: 'Hello from JSON Workflow, '
+        name: GreetInEnglish
+        transition:
+          nextState: GreetPerson
+        type: inject
+      - data:
+          greeting: 'Saludos desde JSON Workflow, '
+        name: GreetInSpanish
+        transition:
+          nextState: GreetPerson
+        type: inject
+      - actionMode: sequential
+        actions:
+          - actionDataFilter:
+              useResults: true
+            functionRef:
+              arguments:
+                message: .greeting+.name
+              invoke: sync
+              refName: greetFunction
+            name: greetAction
+        end:
+          terminate: true
+        name: GreetPerson
+        type: operation
