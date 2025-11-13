@@ -58,7 +58,7 @@ spec:
     - revisionName: rollouts-demo-00003 # blue is tied to the current revision
       percent: 100
       tag: blue
-    - latestRevision: true.   # green can now be tested
+    - latestRevision: true   # green can now be tested
       percent: 0
       tag: green
 
