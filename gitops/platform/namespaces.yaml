@@ -6,6 +6,11 @@ metadata:
 kind: Namespace
 apiVersion: v1
 metadata:
+  name: openshift-serverless-logic
+---
+kind: Namespace
+apiVersion: v1
+metadata:
   name: knative-serving
 ---
 kind: Namespace

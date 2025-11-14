@@ -4,7 +4,7 @@ metadata:
   name: example-console
   namespace: kafka-console
 spec:
-  hostname: my-console.<cluster_domain>
+  hostname: my-console.apps.cluster-9xbwq.9xbwq.sandbox2746.opentlc.com
   kafkaClusters:
     - listener: plain
       name: my-cluster
