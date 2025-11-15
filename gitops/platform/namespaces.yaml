@@ -36,6 +36,16 @@ metadata:
 kind: Namespace
 apiVersion: v1
 metadata:
+  name: demo-functions
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: demo-camel
+---
+kind: Namespace
+apiVersion: v1
+metadata:
   name: kafka
 ---
 kind: Namespace
