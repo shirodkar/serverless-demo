@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: code-with-camel
-          image: 'image-registry.openshift-image-registry.svc:5000/a-test-camel/code-with-camel'
+          image: 'image-registry.openshift-image-registry.svc:5000/demo-camel/code-with-camel'
           resources:
             limits:
               cpu: '1'
