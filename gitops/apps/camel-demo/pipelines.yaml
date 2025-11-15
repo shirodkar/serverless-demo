@@ -1,0 +1,115 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: code-with-camel
+spec:
+  params:
+    - default: code-with-camel
+      name: APP_NAME
+      type: string
+    - default: 'https://github.com/shirodkar/code-with-camel.git'
+      name: GIT_REPO
+      type: string
+    - name: GIT_REVISION
+      type: string
+    - default: 'image-registry.openshift-image-registry.svc:5000/a-test-camel/code-with-camel'
+      name: IMAGE_NAME
+      type: string
+    - default: .
+      name: PATH_CONTEXT
+      type: string
+    - default: latest
+      name: VERSION
+      type: string
+  tasks:
+    - name: fetch-repository
+      params:
+        - name: URL
+          value: $(params.GIT_REPO)
+        - name: REVISION
+          value: $(params.GIT_REVISION)
+        - name: SUBDIRECTORY
+          value: ''
+        - name: DELETE_EXISTING
+          value: 'true'
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+      workspaces:
+        - name: output
+          workspace: workspace
+    - name: build
+      params:
+        - name: IMAGE
+          value: $(params.IMAGE_NAME)
+        - name: TLS_VERIFY
+          value: 'false'
+        - name: CONTEXT
+          value: $(params.PATH_CONTEXT)
+        - name: VERSION
+          value: $(params.VERSION)
+      runAfter:
+        - fetch-repository
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: s2i-java
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+      workspaces:
+        - name: source
+          workspace: workspace
+    - name: deploy
+      params:
+        - name: SCRIPT
+          value: oc rollout status deploy/$(params.APP_NAME)
+      runAfter:
+        - build
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: openshift-client
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+    - name: skopeo-copy
+      params:
+        - name: SOURCE_IMAGE_URL
+          value: $(params.IMAGE_NAME)
+        - name: DESTINATION_IMAGE_URL
+          value: 'quay.io/rh_ee_sshirodk/code-with-camel:latest'
+        - name: SRC_TLS_VERIFY
+          value: 'false'
+        - name: DEST_TLS_VERIFY
+          value: 'true'
+        - name: VERBOSE
+          value: 'true'
+        - name: ARGS
+          value: ''
+      runAfter:
+        - deploy
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: skopeo-copy
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+      workspaces:
+        - name: images_url
+          workspace: workspace
+  workspaces:
+    - name: workspace
