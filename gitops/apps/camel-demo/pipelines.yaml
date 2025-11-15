@@ -83,33 +83,5 @@ spec:
           - name: namespace
             value: openshift-pipelines
         resolver: cluster
-    - name: skopeo-copy
-      params:
-        - name: SOURCE_IMAGE_URL
-          value: $(params.IMAGE_NAME)
-        - name: DESTINATION_IMAGE_URL
-          value: 'quay.io/rh_ee_sshirodk/code-with-camel:latest'
-        - name: SRC_TLS_VERIFY
-          value: 'false'
-        - name: DEST_TLS_VERIFY
-          value: 'true'
-        - name: VERBOSE
-          value: 'true'
-        - name: ARGS
-          value: ''
-      runAfter:
-        - deploy
-      taskRef:
-        params:
-          - name: kind
-            value: task
-          - name: name
-            value: skopeo-copy
-          - name: namespace
-            value: openshift-pipelines
-        resolver: cluster
-      workspaces:
-        - name: images_url
-          workspace: workspace
   workspaces:
     - name: workspace
