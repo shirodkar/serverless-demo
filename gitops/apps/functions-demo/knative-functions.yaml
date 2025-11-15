@@ -2,8 +2,17 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: hello-quarkus-fn
+  labels:
+    function.knative.dev: 'true'
+    function.knative.dev/name: get-customers-fn
+    function.knative.dev/runtime: quarkus
 spec:
   template:
+    metadata:
+      labels:
+        function.knative.dev: 'true'
+        function.knative.dev/name: get-customers-fn
+        function.knative.dev/runtime: quarkus
     spec:
       containerConcurrency: 0
       containers:
