@@ -17,3 +17,20 @@ spec:
   type: ClusterIP
   selector:
     app: code-with-camel
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres
+  labels:
+    template: postgresql-ephemeral-template
+    template.openshift.io/template-instance-owner: ccdffa3d-f3e4-4b4e-a322-ed669de8a866
+spec:
+  ports:
+    - name: postgresql
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP
+  selector:
+    name: postgres
