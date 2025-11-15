@@ -108,7 +108,7 @@ spec:
       prune: true
       selfHeal: true
 ---
-piVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: demo-camel
