@@ -12,6 +12,8 @@ spec:
     path: gitops/apps/eventing-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
+    directory:
+      recursive: true
   syncPolicy:
     automated:
       enabled: true
@@ -32,6 +34,8 @@ spec:
     path: gitops/apps/serving-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
+    directory:
+      recursive: true
   syncPolicy:
     automated:
       enabled: true
@@ -52,6 +56,8 @@ spec:
     path: gitops/apps/progressive-delivery-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
+    directory:
+      recursive: true
   syncPolicy:
     automated:
       enabled: true
@@ -72,6 +78,8 @@ spec:
     path: gitops/apps/functions-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
+    directory:
+      recursive: true
   syncPolicy:
     automated:
       enabled: true
@@ -92,6 +100,8 @@ spec:
     path: gitops/apps/workflow-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
+    directory:
+      recursive: true
   syncPolicy:
     automated:
       enabled: true
