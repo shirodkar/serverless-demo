@@ -129,3 +129,25 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-keda
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: demo-keda
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/apps/keda-demo
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+    directory:
+      recursive: true
+  syncPolicy:
+    automated:
+      enabled: false
+      prune: true
+      selfHeal: true
