@@ -16,5 +16,5 @@ spec:
   triggers:
     - metadata:
         podSelector: app=demand
-        value: '1'
+        value: '1.5'
       type: kubernetes-workload
