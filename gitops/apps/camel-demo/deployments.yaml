@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        deployment: code-with-camel
+        app: code-with-camel
     spec:
       containers:
         - name: code-with-camel
