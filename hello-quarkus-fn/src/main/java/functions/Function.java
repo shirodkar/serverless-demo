@@ -29,17 +29,15 @@ public class Function {
     @Funq
     public Output function(Input input) throws SQLException {
 
-        List<String> results = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement ps = connection.prepareStatement("SELECT name FROM customer")) {
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    results.add(rs.getString("name"));
-                }
-            }
-        }
+        List<Customer> customers = new ArrayList<>();
+        Customer customer1 = new Customer();
+        customer1.name = "Customer 1";
+        customers.add(customer1);
+        Customer customer2 = new Customer();
+        customer2.name = "Customer 2";
+        customers.add(customer2);
 
-        return new Output(results.toString());
+        return new Output(customers.toString());
     }
 
 }
