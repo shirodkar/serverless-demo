@@ -9,16 +9,34 @@ spec:
       containers:
         - name: hello-quarkus-fn
           image: 'quay.io/rh_ee_sshirodk/hello-quarkus-fn'
-          livenessProbe:
-            httpGet:
-              path: /health/liveness
-              port: 0
-          readinessProbe:
-            httpGet:
-              path: /health/readiness
-              port: 0
-            successThreshold: 1
-          resources: {}
+  traffic:
+    - latestRevision: true
+      percent: 100
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: get-customers-fn
+  labels:
+    boson.dev/function: 'true'
+    boson.dev/runtime: quarkus
+    function.knative.dev: 'true'
+    function.knative.dev/name: get-customers-fn
+    function.knative.dev/runtime: quarkus
+spec:
+  template:
+    metadata:
+      labels:
+        boson.dev/function: 'true'
+        boson.dev/runtime: quarkus
+        function.knative.dev: 'true'
+        function.knative.dev/name: get-customers-fn
+        function.knative.dev/runtime: quarkus
+    spec:
+      containerConcurrency: 0
+      containers:
+        - name: get-customers-fn
+          image: 'quay.io/rh_ee_sshirodk/get-customers-fn'
   traffic:
     - latestRevision: true
       percent: 100
