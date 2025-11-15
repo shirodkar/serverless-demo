@@ -1,0 +1,34 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: code-with-camel
+  labels:
+    app: code-with-camel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-with-camel
+  template:
+    metadata:
+      labels:
+        deployment: code-with-camel
+    spec:
+      containers:
+        - name: code-with-camel
+          image: 'quay.io/rh_ee_sshirodk/code-with-camel'
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          env:
+            - name: customer-service.endpoint
+              value: 'http://get-customers-fn.demo-functions.svc.cluster.local'

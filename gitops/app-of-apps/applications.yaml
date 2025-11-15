@@ -107,3 +107,25 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
+---
+piVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-camel
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: demo-camel
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/apps/camel-demo
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+    directory:
+      recursive: true
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
