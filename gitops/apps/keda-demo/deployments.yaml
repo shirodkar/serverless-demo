@@ -1,0 +1,55 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: demand
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demand
+  template:
+    metadata:
+      labels:
+        app: demand
+    spec:
+      containers:
+        - name: container
+          image: 'image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: supply
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supply
+  template:
+    metadata:
+      labels:
+        app: supply
+    spec:
+      containers:
+        - name: container
+          image: 'image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi
