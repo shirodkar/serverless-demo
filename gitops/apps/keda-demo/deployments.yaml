@@ -3,7 +3,6 @@ apiVersion: apps/v1
 metadata:
   name: demand
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: demand
@@ -31,7 +30,6 @@ apiVersion: apps/v1
 metadata:
   name: supply
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: supply
