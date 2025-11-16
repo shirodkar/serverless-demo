@@ -13,6 +13,7 @@ spec:
     targetRevision: HEAD
     directory:
       recursive: true
+      exclude: acm,applications.yaml
   syncPolicy:
     automated:
       enabled: true
