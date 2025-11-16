@@ -5,7 +5,7 @@ metadata:
   labels:
     scaledobject.keda.sh/name: demand-supply-scaler
 spec:
-  cooldownPeriod: 0
+  cooldownPeriod: 1
   maxReplicaCount: 100
   minReplicaCount: 0
   pollingInterval: 1
