@@ -8,12 +8,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops/platform
+    path: gitops/platform/infra
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
     directory:
       recursive: true
-      exclude: acm,applications.yaml
   syncPolicy:
     automated:
       enabled: true
