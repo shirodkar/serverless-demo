@@ -69,5 +69,4 @@ spec:
       workspaces:
         - name: workspace
   workspaces:
-    - name: source
-      name: workspace
+    - name: workspace
