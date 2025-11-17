@@ -1,0 +1,83 @@
+
+schemaVersion: 2.2.0
+metadata:
+  name: get-customers-fn
+components:
+  - name: dev-tooling
+    container:
+      memoryRequest: 1Gi
+      memoryLimit: 8Gi
+      cpuRequest: 500m
+      cpuLimit: 2000m
+      mountSources: true
+      sourceMapping: /projects
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      endpoints:
+      - name: hello-quarkus
+        targetPort: 8080
+        exposure: public
+        protocol: http
+      - name: debug
+        exposure: internal
+        targetPort: 5858
+      - name: dt-socket
+        exposure: internal
+        targetPort: 5005
+      env:
+      - name: VSCODE_TRUSTED_EXTENSIONS
+        value: "github.copilot,github.copilot-chat"
+      - name: DEBUG_PORT
+        value: '5858'
+      - name: KUBEDOCK_ENABLED
+        value: 'true'
+      volumeMounts:
+      - name: m2
+        path: /home/user/.m2
+  - name: postgres
+    container:
+      image: quay.io/sclorg/postgresql-15-c9s:c9s
+      memoryRequest: 128M
+      memoryLimit: 512M
+      sourceMapping: /projects
+      mountSources: true
+      env:
+      - name: POSTGRESQL_USER
+        value: postgres
+      - name: POSTGRESQL_PASSWORD
+        value: postgres
+      - name: POSTGRESQL_DATABASE
+        value: postgres
+      volumeMounts:
+      - name: pgdata
+        path: /var/lib/pgsql/data
+      endpoints:
+        - name: postgres
+          targetPort: 5432
+          exposure: internal
+  - volume:
+      size: 4Gi
+    name: projects
+  - volume:
+      size: 2Gi
+    name: pgdata
+  - volume:
+      size: 2Gi
+    name: m2
+commands:
+  - id: install
+    exec:
+      commandLine: mvn clean install
+      component: dev-tooling
+  - id: package
+    exec:
+      commandLine: mvn package
+      component: dev-tooling
+  - id: quarkus-dev-mode
+    exec:
+      commandLine: 'mvn quarkus:dev -Dmaven.repo.local=/home/user/.m2/repository -Dquarkus.http.host=0.0.0.0'
+      component: dev-tooling
+      hotReloadCapable: true
+      group:
+        isDefault: true
+        kind: run
+      label: Start Quarkus Development mode (Hot reload)
