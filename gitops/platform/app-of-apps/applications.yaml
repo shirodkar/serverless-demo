@@ -10,7 +10,7 @@ spec:
   source:
     path: gitops/platform/infra
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
-    targetRevision: HEAD
+    targetRevision: dg9wn
     directory:
       recurse: true
   syncPolicy:
