@@ -12,6 +12,7 @@ spec:
       type: string
     - name: GIT_REVISION
       type: string
+      default: main
     - default: 'quay.io/rh_ee_sshirodk/code-with-camel'
       name: IMAGE_NAME
       type: string
