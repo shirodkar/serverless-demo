@@ -67,6 +67,7 @@ spec:
             value: openshift-pipelines
         resolver: cluster
       workspaces:
-        - name: workspace
+        - name: source
+          name: workspace
   workspaces:
     - name: workspace
