@@ -67,3 +67,6 @@ spec:
         resolver: cluster
       workspaces:
         - name: workspace
+  workspaces:
+    - name: source
+      name: workspace
