@@ -12,7 +12,7 @@ spec:
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
     directory:
-      recursive: true
+      recurse: true
   syncPolicy:
     automated:
       enabled: true
