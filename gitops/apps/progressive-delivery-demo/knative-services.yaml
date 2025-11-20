@@ -1,38 +1,6 @@
 ###
 # Blue-Green/Canary - Initial 'blue' version
 ###
-apiVersion: serving.knative.dev/v1
-kind: Service
-metadata:
-  name: rollouts-demo
-spec:
-  template:
-    spec:
-      containerConcurrency: 1
-      containers:
-        - image: 'quay.io/openshiftdemos/rollouts-demo:blue'
-          name: rollouts-demo
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources:
-            limits:
-              cpu: 200m
-              memory: 512Mi
-            requests:
-              cpu: 100m
-              memory: 256Mi
-  traffic:
-    - latestRevision: true
-      percent: 100
-      tag: blue
-    - latestRevision: true
-      percent: 0
-      tag: green
-
-###
-# Blue-Green/Canary - Stage 'green' version for Testing in Production environment
-###
 # apiVersion: serving.knative.dev/v1
 # kind: Service
 # metadata:
@@ -42,7 +10,7 @@ spec:
 #     spec:
 #       containerConcurrency: 1
 #       containers:
-#         - image: 'quay.io/openshiftdemos/rollouts-demo:green' # changed to green
+#         - image: 'quay.io/openshiftdemos/rollouts-demo:blue'
 #           name: rollouts-demo
 #           ports:
 #             - containerPort: 8080
@@ -55,12 +23,44 @@ spec:
 #               cpu: 100m
 #               memory: 256Mi
 #   traffic:
-#     - revisionName: rollouts-demo-00001 # blue is tied to the current revision (set the correct revision number)
+#     - latestRevision: true
 #       percent: 100
 #       tag: blue
-#     - latestRevision: true   # green can now be tested
+#     - latestRevision: true
 #       percent: 0
 #       tag: green
+
+###
+# Blue-Green/Canary - Stage 'green' version for Testing in Production environment
+###
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: rollouts-demo
+spec:
+  template:
+    spec:
+      containerConcurrency: 1
+      containers:
+        - image: 'quay.io/openshiftdemos/rollouts-demo:green' # changed to green
+          name: rollouts-demo
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+  traffic:
+    - revisionName: rollouts-demo-00001 # blue is tied to the current revision (set the correct revision number)
+      percent: 100
+      tag: blue
+    - latestRevision: true   # green can now be tested
+      percent: 0
+      tag: green
 
 ###
 # Blue-Green - Promote 'green' version to Production
