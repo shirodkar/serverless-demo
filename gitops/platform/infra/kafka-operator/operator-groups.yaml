@@ -3,6 +3,8 @@ kind: OperatorGroup
 metadata:
   name: amq-streams
   namespace: kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   upgradeStrategy: Default
 ---
@@ -11,5 +13,7 @@ kind: OperatorGroup
 metadata:
   name: amq-streams-console
   namespace: kafka-console
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   upgradeStrategy: Default

@@ -5,6 +5,8 @@ metadata:
   namespace: kafka
   labels:
     strimzi.io/cluster: my-cluster
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 5
   roles:

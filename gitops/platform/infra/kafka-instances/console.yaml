@@ -3,6 +3,8 @@ kind: Console
 metadata:
   name: example-console
   namespace: kafka-console
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   hostname: my-console.apps.cluster-9xbwq.9xbwq.sandbox2746.opentlc.com
   kafkaClusters:

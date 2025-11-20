@@ -3,5 +3,7 @@ kind: OperatorGroup
 metadata:
   name: openshift-serverless-logic-og
   namespace: openshift-serverless-logic
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   upgradeStrategy: Default

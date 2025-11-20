@@ -4,6 +4,7 @@ metadata:
   annotations:
     strimzi.io/kraft: enabled
     strimzi.io/node-pools: enabled
+    argocd.argoproj.io/sync-wave: "4"
   name: my-cluster
   namespace: kafka
 spec:

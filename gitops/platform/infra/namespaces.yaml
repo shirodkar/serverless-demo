@@ -2,23 +2,33 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-serving
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 ---
 kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-eventing
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 ---
 kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-progressive-delivery
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 ---
 kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-functions
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 ---
 kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-camel
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
