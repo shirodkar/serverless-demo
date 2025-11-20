@@ -1,26 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: openshift-serverless
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: openshift-serverless-logic
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: knative-serving
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: knative-eventing
----
-kind: Namespace
-apiVersion: v1
-metadata:
   name: demo-serving
 ---
 kind: Namespace
@@ -42,13 +22,3 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: demo-camel
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: kafka
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: kafka-console
