@@ -8,7 +8,7 @@ import io.quarkus.funqy.Funq;
 /**
  * Your Function class
  */
-public class CustomersFuntion {
+public class CustomersFunction {
 
     /**
      * Use the Quarkus Funqy extension for our function. This function returns a list of customers.
