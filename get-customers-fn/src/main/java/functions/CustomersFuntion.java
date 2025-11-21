@@ -11,7 +11,7 @@ import io.quarkus.funqy.Funq;
 public class CustomersFuntion {
 
     /**
-     * Use the Quarkus Funqy extension for our function. This function simply echoes its input
+     * Use the Quarkus Funqy extension for our function. This function returns a list of customers.
      * @return List of customers
      */
     @Funq
