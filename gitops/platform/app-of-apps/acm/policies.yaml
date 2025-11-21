@@ -85,7 +85,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1beta1
         kind: OperatorPolicy
         metadata:
-          name: install-devspaces-operator
+          name: install-kafka-operator
         spec:
           complianceType: musthave
           remediationAction: enforce
@@ -101,7 +101,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1beta1
         kind: OperatorPolicy
         metadata:
-          name: install-devspaces-operator
+          name: install-kafka-console-operator
         spec:
           complianceType: musthave
           remediationAction: enforce
@@ -117,7 +117,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1beta1
         kind: OperatorPolicy
         metadata:
-          name: install-devspaces-operator
+          name: install-serverless-logic-operator
         spec:
           complianceType: musthave
           remediationAction: enforce
