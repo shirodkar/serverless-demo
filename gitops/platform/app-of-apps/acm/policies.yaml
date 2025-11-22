@@ -45,9 +45,6 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
-          operatorGroup:
-            name: serverless-operator-og
-            namespace: openshift-serverless
           subscription:
             name: serverless-operator
             namespace: openshift-serverless
