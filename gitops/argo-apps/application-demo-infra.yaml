@@ -17,7 +17,7 @@ spec:
       recurse: true
     helm:
       valueFiles:
-        - values.yaml
+        - gitops/platform/infra/values.yaml
   syncPolicy:
     automated:
       enabled: true
