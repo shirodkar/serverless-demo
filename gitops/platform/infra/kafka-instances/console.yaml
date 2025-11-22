@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
-  hostname: my-console.apps.cluster-pt28k.pt28k.sandbox3542.opentlc.com
+  hostname: my-console.apps.cluster-x5jcn.x5jcn.sandbox2720.opentlc.com
   kafkaClusters:
     - listener: plain
       name: my-cluster
