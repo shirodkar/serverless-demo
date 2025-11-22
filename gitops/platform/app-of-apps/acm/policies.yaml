@@ -118,7 +118,7 @@ spec:
           severity: critical
           operatorGroup:
             name: amq-streams-console-og
-            namespace: kafka
+            namespace: kafka-console
           subscription:
             name: amq-streams-console
             namespace: kafka-console
