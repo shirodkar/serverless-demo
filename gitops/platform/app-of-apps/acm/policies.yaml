@@ -47,6 +47,7 @@ spec:
           severity: critical
           operatorGroup:
             name: serverless-operator-og
+            namespace: openshift-serverless
           subscription:
             name: serverless-operator
             channel: stable
