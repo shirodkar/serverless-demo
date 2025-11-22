@@ -52,6 +52,7 @@ spec:
             name: serverless-operator-og
           subscription:
             name: serverless-operator
+            namespace: openshift-serverless
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -72,6 +73,7 @@ spec:
             name: openshift-keda-og
           subscription:
             name: openshift-custom-metrics-autoscaler-operator
+            namespace: openshift-keda
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -149,6 +151,7 @@ spec:
             name: logic-operator-og
           subscription:
             name: logic-operator-rhel8
+            namespace: openshift-serverless-logic
             channel: alpha
             source: redhat-operators
             sourceNamespace: openshift-marketplace
