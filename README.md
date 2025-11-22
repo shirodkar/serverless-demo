@@ -16,4 +16,8 @@ This is a set of applications to demonstrate the features of Openshift Serverles
 
 ## Install the required Operators and Demo Apps
 
-`oc apply -f gitops/app-of-apps/applications.yaml`
+1. `git clone https://github.com/shirodkar/serverless-demo.git`
+2. `cd serverless-demo`
+3. `oc apply -f gitops/app-of-apps/applications.yaml`
+
+**Note:** It could take about 15-30 minutes for the installation to complete.
