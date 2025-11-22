@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm
+  name: demo-eventing
   namespace: openshift-gitops
   labels:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
+    namespace: demo-eventing
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops/argo-apps
+    path: gitops/demo-apps/eventing-demo/manifests
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
     directory:
