@@ -45,6 +45,8 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          operatorGroup:
+            name: serverless-operator-og
           subscription:
             name: serverless-operator
             channel: stable
