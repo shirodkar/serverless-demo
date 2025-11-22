@@ -107,6 +107,7 @@ spec:
             name: amq-streams-og
           subscription:
             name: amq-streams
+            namespace: kafka
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -127,6 +128,7 @@ spec:
             name: amq-streams-console-og
           subscription:
             name: amq-streams-console
+            namespace: kafka-console
             channel: alpha
             source: redhat-operators
             sourceNamespace: openshift-marketplace
