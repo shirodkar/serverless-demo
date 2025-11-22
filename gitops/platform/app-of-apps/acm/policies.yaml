@@ -50,7 +50,6 @@ spec:
               - openshift-serverless
           operatorGroup:
             name: serverless-operator-og
-            createNamespace: true
           subscription:
             name: serverless-operator
             channel: stable
