@@ -4,7 +4,7 @@ metadata:
   name: example-console
   namespace: kafka-console
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   hostname: my-console.apps.cluster-pt28k.pt28k.sandbox3542.opentlc.com
   kafkaClusters:
