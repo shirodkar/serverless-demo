@@ -65,9 +65,11 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          namespaceSelector:
+            include:
+              - openshift-keda
           operatorGroup:
             name: openshift-keda-og
-            namespace: openshift-keda
           subscription:
             name: openshift-custom-metrics-autoscaler-operator
             channel: stable
@@ -98,12 +100,13 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          namespaceSelector:
+            include:
+              - kafka
           operatorGroup:
             name: amq-streams-og
-            namespace: kafka
           subscription:
             name: amq-streams
-            namespace: kafka
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -117,12 +120,13 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          namespaceSelector:
+            include:
+              - kafka-console
           operatorGroup:
             name: amq-streams-console-og
-            namespace: kafka-console
           subscription:
             name: amq-streams-console
-            namespace: kafka-console
             channel: alpha
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -136,12 +140,13 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          namespaceSelector:
+            include:
+              - openshift-serverless-logic
           operatorGroup:
             name: logic-operator-og
-            namespace: openshift-serverless-logic
           subscription:
             name: logic-operator-rhel8
-            namespace: openshift-serverless-logic
             channel: alpha
             source: redhat-operators
             sourceNamespace: openshift-marketplace
