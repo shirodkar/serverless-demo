@@ -47,7 +47,6 @@ spec:
           severity: critical
           subscription:
             name: serverless-operator
-            namespace: openshift-serverless
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
