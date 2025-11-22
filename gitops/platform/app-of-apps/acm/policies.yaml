@@ -45,8 +45,12 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          operatorGroup:
+            name: serverless-operator-og
+            namespace: openshift-serverless
           subscription:
             name: serverless-operator
+            namespace: openshift-serverless
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -60,6 +64,9 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          operatorGroup:
+            name: openshift-keda-og
+            namespace: openshift-keda
           subscription:
             name: openshift-custom-metrics-autoscaler-operator
             channel: stable
@@ -90,6 +97,9 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          operatorGroup:
+            name: amq-streams-og
+            namespace: kafka
           subscription:
             name: amq-streams
             namespace: kafka
@@ -106,6 +116,9 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          operatorGroup:
+            name: amq-streams-console-og
+            namespace: kafka
           subscription:
             name: amq-streams-console
             namespace: kafka-console
@@ -122,6 +135,9 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          operatorGroup:
+            name: logic-operator-og
+            namespace: openshift-serverless-logic
           subscription:
             name: logic-operator-rhel8
             namespace: openshift-serverless-logic
