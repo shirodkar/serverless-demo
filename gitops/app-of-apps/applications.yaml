@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm
+  name: app-of-apps
   namespace: openshift-gitops
   labels:
     argocd.argoproj.io/sync-wave: "1"
@@ -18,7 +18,7 @@ spec:
   syncPolicy:
     automated:
       enabled: true
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
