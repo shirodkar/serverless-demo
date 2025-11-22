@@ -10,6 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
+    chart: infra
     path: gitops/platform/infra
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
