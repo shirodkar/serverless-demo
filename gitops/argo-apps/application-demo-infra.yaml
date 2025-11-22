@@ -10,14 +10,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    chart: gitops/platform/infra
+    path: gitops/platform/infra
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
     directory:
       recurse: true
-    helm:
-      valueFiles:
-        - values.yaml
   syncPolicy:
     automated:
       enabled: true
