@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: test
-          image: '{{ .Values.imageurl }}'
+          image: {{ .Values.imageurl }}
           resources:
             limits:
               cpu: '1'
