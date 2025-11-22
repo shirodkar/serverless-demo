@@ -1,8 +1,60 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: acm
+  namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/platform/acm
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+  namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/platform/infra
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: demo-eventing
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-eventing
@@ -25,6 +77,8 @@ kind: Application
 metadata:
   name: demo-serving
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-serving
@@ -47,6 +101,8 @@ kind: Application
 metadata:
   name: demo-progressive-delivery
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-progressive-delivery
@@ -69,6 +125,8 @@ kind: Application
 metadata:
   name: demo-functions
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-functions
@@ -91,6 +149,8 @@ kind: Application
 metadata:
   name: demo-workflow
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-workflow
@@ -113,6 +173,8 @@ kind: Application
 metadata:
   name: demo-camel
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-camel
@@ -135,6 +197,8 @@ kind: Application
 metadata:
   name: demo-keda
   namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     namespace: demo-keda
