@@ -32,3 +32,10 @@ metadata:
   name: demo-camel
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: demo-keda
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
