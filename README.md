@@ -22,3 +22,5 @@ This is a set of applications to demonstrate the features of Openshift Serverles
 4. `oc apply -f gitops/app-of-apps/applications.yaml`
 
 **Note:** It could take about 15-30 minutes for the installation to complete.
+
+TBD: The Kafka Console hostname is hardcoded in gitops/platform/infra/templates/kafka-instances/console.yaml. Replace it with your hostname.
