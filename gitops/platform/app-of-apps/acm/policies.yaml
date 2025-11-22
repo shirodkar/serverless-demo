@@ -45,13 +45,14 @@ spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
+          namespaceSelector:
+            include:
+              - openshift-serverless
           operatorGroup:
             name: serverless-operator-og
-            namespace: openshift-serverless
-            upgradeStrategy: Default
+            createNamespace: true
           subscription:
             name: serverless-operator
-            namespace: openshift-serverless
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
