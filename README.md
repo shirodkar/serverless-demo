@@ -36,7 +36,7 @@ This is a set of applications to demonstrate the features of Openshift Serverles
 
 **Note:** It could take about 10-20 minutes for the installation to complete. Wait until all apps in ArgoCD are Healthy and Synced.
 
-TBD: The Kafka Console hostname is hardcoded in gitops/platform/infra/templates/kafka-instances/console.yaml. Replace it with your hostname.
+6. From the ArgoCD UI, select the 'infra' tile => DETAILS => PARAMETERS, and EDIT the 'kafkaconsoleurl' parameter value using the base URI of your OCP cluster.
 
 ## Demo
 
