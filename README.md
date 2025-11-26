@@ -43,4 +43,4 @@ This is a set of applications to demonstrate the features of Openshift Serverles
 1. Serving - [Recording](https://drive.google.com/file/d/1lIlwB2DTdQukK9pF7qbKo1QpqpGLEkU1/view?usp=drive_link)
 2. Eventing - [Recording](https://drive.google.com/file/d/1Jqri669dx_2Z5T1hOGBCfxEuaU0k0dKZ/view?usp=drive_link)
 3. Functions - [Recording](https://drive.google.com/file/d/1DnTBI78GySUXsp1YI0wOn86m0qdP14w2/view?usp=drive_link)
-4. Sererless Logic - [Recording](https://drive.google.com/file/d/1y-2TyQVWyxn6IY7AgY3d29BePxcNMEy0/view?usp=drive_link)
+4. Serverless Logic - [Recording](https://drive.google.com/file/d/1y-2TyQVWyxn6IY7AgY3d29BePxcNMEy0/view?usp=drive_link)
