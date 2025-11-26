@@ -10,7 +10,14 @@ This is a set of applications to demonstrate the features of Openshift Serverles
 
 1. Install Advanced Cluster Management for Kubernetes (ACM) Operator
 
-**Note:** ACM is only used to install operators. Alternatively, you can install the following operators manually: Openshift Pipelines, Openshift Serverless, Openshift Serverless Logic, Custom Metrics Autoscaler, Openshift DevSpaces, Streams for Apache Kafka, Streams for Apache Kafka Console
+**Note:** ACM is only used to install operators. Alternatively, you can install the following operators manually: 
+  - Openshift Pipelines
+  - Openshift Serverless
+  - Openshift Serverless Logic
+  - Custom Metrics Autoscaler
+  - Openshift DevSpaces
+  - Streams for Apache Kafka (install under project called 'kafka')
+  - Streams for Apache Kafka Console (install under project called 'kafka')
 
 2. Install Openshift GitOps (ArgoCD) Operator, and wait for the ArgoCD instance to be Available.
 3. Make sure you are logged into the OCP cluster as a cluster admin.
