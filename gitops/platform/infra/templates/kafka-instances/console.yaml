@@ -11,3 +11,14 @@ spec:
     - listener: plain
       name: my-cluster
       namespace: kafka
+---
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: kafka-console
+spec:
+  applicationMenu:
+    section: Kafka
+  href: 'https://{{ .Values.kafkaconsoleurl }}'
+  location: ApplicationMenu
+  text: Kafka Console
