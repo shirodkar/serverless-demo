@@ -17,7 +17,7 @@ This is a set of applications to demonstrate the features of Openshift Serverles
   - Custom Metrics Autoscaler
   - Openshift DevSpaces
   - Streams for Apache Kafka (install under project called 'kafka')
-  - Streams for Apache Kafka Console (install under project called 'kafka')
+  - Streams for Apache Kafka Console (install under project called 'kafka-console')
 
 2. Install Openshift GitOps (ArgoCD) Operator, and wait for the ArgoCD instance to be Available.
 3. Make sure you are logged into the OCP cluster as a cluster admin.
