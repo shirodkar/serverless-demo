@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
-  hostname: {{ .Values.kafkaconsoleurl }}
+  hostname: '{{ .Values.kafkaconsoleurl }}'
   kafkaClusters:
     - listener: plain
       name: my-cluster
