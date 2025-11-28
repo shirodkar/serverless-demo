@@ -19,7 +19,7 @@ metadata:
 spec:
   applicationMenu:
     section: Kafka
-    imageURL: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Apache_Kafka_logo.svg'
+    imageURL: 'https://svn.apache.org/repos/asf/kafka/site/logos/originals/png/ICON%20-%20White%20on%20Transparent.png'
   href: 'https://{{ .Values.kafkaconsoleurl }}'
   location: ApplicationMenu
   text: Kafka Console
