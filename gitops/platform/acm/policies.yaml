@@ -2,7 +2,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: install-runtime-operators
-  namespace: open-cluster-management-global-set
+  namespace: openshift-gitops
 spec:
   disabled: false
   policy-templates:
@@ -116,7 +116,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: install-platform-operators
-  namespace: open-cluster-management-global-set
+  namespace: openshift-gitops
 spec:
   disabled: false
   policy-templates:
