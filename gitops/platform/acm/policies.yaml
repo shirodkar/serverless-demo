@@ -1,41 +1,11 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: install-operators
+  name: install-runtime-operators
   namespace: open-cluster-management-global-set
 spec:
   disabled: false
   policy-templates:
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1beta1
-        kind: OperatorPolicy
-        metadata:
-          name: install-pipelines-operator
-        spec:
-          complianceType: musthave
-          remediationAction: enforce
-          severity: critical
-          subscription:
-            name: openshift-pipelines-operator-rh
-            channel: latest
-            source: redhat-operators
-            sourceNamespace: openshift-marketplace
-          upgradeApproval: Automatic
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1beta1
-        kind: OperatorPolicy
-        metadata:
-          name: install-gitops-operator
-        spec:
-          complianceType: musthave
-          remediationAction: enforce
-          severity: critical
-          subscription:
-            name: openshift-gitops-operator
-            channel: latest
-            source: redhat-operators
-            sourceNamespace: openshift-marketplace
-          upgradeApproval: Automatic
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1beta1
         kind: OperatorPolicy
@@ -61,6 +31,27 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1beta1
         kind: OperatorPolicy
         metadata:
+          name: install-serverless-logic-operator
+        spec:
+          complianceType: musthave
+          remediationAction: enforce
+          severity: critical
+          namespaceSelector:
+            include:
+              - openshift-serverless-logic
+          operatorGroup:
+            name: logic-operator-og
+          subscription:
+            name: logic-operator-rhel8
+            namespace: openshift-serverless-logic
+            channel: alpha
+            source: redhat-operators
+            sourceNamespace: openshift-marketplace
+          upgradeApproval: Automatic
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1beta1
+        kind: OperatorPolicy
+        metadata:
           name: install-cma-operator
         spec:
           complianceType: musthave
@@ -74,21 +65,6 @@ spec:
           subscription:
             name: openshift-custom-metrics-autoscaler-operator
             namespace: openshift-keda
-            channel: stable
-            source: redhat-operators
-            sourceNamespace: openshift-marketplace
-          upgradeApproval: Automatic
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1beta1
-        kind: OperatorPolicy
-        metadata:
-          name: install-devspaces-operator
-        spec:
-          complianceType: musthave
-          remediationAction: enforce
-          severity: critical
-          subscription:
-            name: devspaces
             channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
@@ -135,24 +111,57 @@ spec:
             source: redhat-operators
             sourceNamespace: openshift-marketplace
           upgradeApproval: Automatic
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: install-platform-operators
+  namespace: open-cluster-management-global-set
+spec:
+  disabled: false
+  policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1beta1
         kind: OperatorPolicy
         metadata:
-          name: install-serverless-logic-operator
+          name: install-pipelines-operator
         spec:
           complianceType: musthave
           remediationAction: enforce
           severity: critical
-          namespaceSelector:
-            include:
-              - openshift-serverless-logic
-          operatorGroup:
-            name: logic-operator-og
           subscription:
-            name: logic-operator-rhel8
-            namespace: openshift-serverless-logic
-            channel: alpha
+            name: openshift-pipelines-operator-rh
+            channel: latest
+            source: redhat-operators
+            sourceNamespace: openshift-marketplace
+          upgradeApproval: Automatic
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1beta1
+        kind: OperatorPolicy
+        metadata:
+          name: install-gitops-operator
+        spec:
+          complianceType: musthave
+          remediationAction: enforce
+          severity: critical
+          subscription:
+            name: openshift-gitops-operator
+            channel: latest
+            source: redhat-operators
+            sourceNamespace: openshift-marketplace
+          upgradeApproval: Automatic
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1beta1
+        kind: OperatorPolicy
+        metadata:
+          name: install-devspaces-operator
+        spec:
+          complianceType: musthave
+          remediationAction: enforce
+          severity: critical
+          subscription:
+            name: devspaces
+            channel: stable
             source: redhat-operators
             sourceNamespace: openshift-marketplace
           upgradeApproval: Automatic

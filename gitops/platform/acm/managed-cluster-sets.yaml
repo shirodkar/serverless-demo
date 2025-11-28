@@ -1,0 +1,39 @@
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSet
+metadata:
+  name: hub-only
+spec:
+  clusterSelector:
+    selectorType: ExclusiveClusterSetLabel
+---
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSet
+metadata:
+  name: dev-only
+spec:
+  clusterSelector:
+    selectorType: ExclusiveClusterSetLabel
+---
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSet
+metadata:
+  name: qa-only
+spec:
+  clusterSelector:
+    selectorType: ExclusiveClusterSetLabel
+---
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSet
+metadata:
+  name: uat-only
+spec:
+  clusterSelector:
+    selectorType: ExclusiveClusterSetLabel
+---
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSet
+metadata:
+  name: prod-only
+spec:
+  clusterSelector:
+    selectorType: ExclusiveClusterSetLabel

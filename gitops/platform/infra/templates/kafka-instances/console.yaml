@@ -22,3 +22,4 @@ spec:
   href: 'https://{{ .Values.kafkaconsoleurl }}'
   location: ApplicationMenu
   text: Kafka Console
+  imageURL: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Apache_Kafka_logo.svg'
