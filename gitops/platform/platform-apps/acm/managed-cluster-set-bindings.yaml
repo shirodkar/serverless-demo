@@ -17,6 +17,14 @@ spec:
 apiVersion: cluster.open-cluster-management.io/v1beta2
 kind: ManagedClusterSetBinding
 metadata:
+  name: dev-only
+  namespace: shared-gitops
+spec:
+  clusterSet: dev-only
+---
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSetBinding
+metadata:
   name: qa-only
   namespace: openshift-gitops
 spec:
