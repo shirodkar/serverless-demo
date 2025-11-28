@@ -12,7 +12,7 @@ spec:
     name: all-managed-placement
 ---
 apiVersion: apps.open-cluster-management.io/v1beta1
-kind: SharedGitOpsCluster
+kind: GitOpsCluster
 metadata:
   name: shared-gitops-cluster
   namespace: shared-gitops
