@@ -18,10 +18,10 @@ spec:
       destination:
         server: "{{server}}"
       project: default
-      sources:
-        - path: gitops/platform/platform-apps/infra
-          repoURL: 'https://github.com/shirodkar/serverless-demo.git'
-          targetRevision: HEAD
+      source:
+        path: gitops/platform/platform-apps/infra
+        repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+        targetRevision: HEAD
       syncPolicy:
         automated:
           enabled: true
