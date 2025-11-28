@@ -1,3 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ci-pipeline
+---
 apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
