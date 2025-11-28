@@ -1,33 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: apps
+  name: app-of-apps
   namespace: shared-gitops
+  labels:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  generators:
-    - clusterDecisionResource:
-        configMapRef: acm-placement
-        labelSelector:
-          matchLabels:
-            cluster.open-cluster-management.io/placement: dev-only-placement
-        requeueAfterSeconds: 180
-  template:
-    metadata:
-      name: apps-{{name}}
-    spec:
-      destination:
-        server: "{{server}}"
-      project: default
-      source:
-        path: gitops/shared/argo-apps
-        repoURL: 'https://github.com/shirodkar/serverless-demo.git'
-        targetRevision: HEAD
-        directory:
-          recurse: true
-      syncPolicy:
-        automated:
-          enabled: true
-          prune: false
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: gitops/shared/argo-apps
+    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

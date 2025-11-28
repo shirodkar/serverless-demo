@@ -8,6 +8,13 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: dev-only-placement
+        requeueAfterSeconds: 180
   template:
     metadata:
       name: demo-keda-{{name}}
