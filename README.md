@@ -30,9 +30,11 @@ This is a set of applications to demonstrate the features of Openshift Serverles
 1. ```git clone https://github.com/shirodkar/serverless-demo.git```
 2. ```cd serverless-demo```
 3. Make sure you are logged into the OCP cluster as a cluster admin.
-4. If you are not using ACM, exclude the application-demo-acm.yaml file, by adding the following to gitops/app-of-apps/applications.yaml:
-```spec.source.directory.exclude: '{application-demo-acm.yaml}'```
-5. ```oc apply -f gitops/app-of-apps/applications.yaml```
+4. If using ACM, run the command
+```oc apply -f gitops/platform/app-of-apps/applications.yaml```
+Otherwise, run the command:
+```oc apply -f gitops/platform/app-of-apps/applications-infra-only.yaml```
+5. ```oc apply -f gitops/shared/app-of-apps/applications.yaml```
 
 **Note:** It could take about 10-20 minutes for the installation to complete. Wait until all apps in ArgoCD are Healthy and Synced.
 
