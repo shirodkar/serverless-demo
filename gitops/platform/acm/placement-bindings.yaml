@@ -2,7 +2,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: install-operators-on-managed-clusters
-  namespace: open-cluster-management-global-set
+  namespace: openshift-gitops
 placementRef:
   name: all-managed-placement
   kind: Placement
@@ -16,7 +16,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: install-operators-on-hub-cluster
-  namespace: open-cluster-management-global-set
+  namespace: openshift-gitops
 placementRef:
   name: hub-only-placement
   kind: Placement
