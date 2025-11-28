@@ -1,6 +1,13 @@
 kind: Namespace
 apiVersion: v1
 metadata:
+  name: ci-pipeline
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+---
+kind: Namespace
+apiVersion: v1
+metadata:
   name: demo-camel
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
