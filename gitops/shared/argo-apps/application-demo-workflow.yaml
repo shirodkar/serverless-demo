@@ -1,25 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: demo-workflow
-  namespace: openshift-gitops
+  namespace: shared-gitops
   labels:
     argocd.argoproj.io/sync-wave: "3"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: demo-workflow
-    server: 'https://kubernetes.default.svc'
-  project: default
-  source:
-    path: gitops/shared/demo-apps/workflow-demo
-    repoURL: 'https://github.com/shirodkar/serverless-demo.git'
-    targetRevision: HEAD
-    directory:
-      recurse: true
-  syncPolicy:
-    automated:
-      enabled: true
-      prune: true
-      selfHeal: true
+  template:
+    metadata:
+      name: demo-workflow-{{name}}
+    spec:
+      destination:
+        namespace: demo-workflow
+        server: "{{server}}"
+      project: default
+      source:
+        path: gitops/shared/demo-apps/workflow-demo
+        repoURL: 'https://github.com/shirodkar/serverless-demo.git'
+        targetRevision: HEAD
+        directory:
+          recurse: true
+      syncPolicy:
+        automated:
+          enabled: true
+          prune: true
+          selfHeal: true
