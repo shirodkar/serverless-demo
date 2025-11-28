@@ -37,6 +37,15 @@ spec:
 apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: Placement
 metadata:
+  name: dev-only-placement
+  namespace: shared-gitops
+spec:
+  clusterSets:
+    - dev-only
+---
+apiVersion: cluster.open-cluster-management.io/v1beta1
+kind: Placement
+metadata:
   name: qa-only-placement
   namespace: openshift-gitops
 spec:
