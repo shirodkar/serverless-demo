@@ -1,23 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-workflow
+  name: infra
   namespace: openshift-gitops
   labels:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "1"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: demo-workflow
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops/demo-apps/workflow-demo
+    path: gitops/platform/platform-apps/infra
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
-    directory:
-      recurse: true
   syncPolicy:
     automated:
       enabled: true

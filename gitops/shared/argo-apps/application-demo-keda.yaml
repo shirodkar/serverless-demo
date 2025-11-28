@@ -1,24 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra
+  name: demo-keda
   namespace: openshift-gitops
   labels:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    namespace: demo-keda
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops/platform/infra
+    path: gitops/shared/demo-apps/keda-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       enabled: true
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

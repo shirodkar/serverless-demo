@@ -1,18 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm
+  name: demo-serving
   namespace: openshift-gitops
   labels:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "3"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    namespace: demo-serving
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops/platform/acm
+    path: gitops/shared/demo-apps/serving-demo
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
     directory:
@@ -22,5 +23,3 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
