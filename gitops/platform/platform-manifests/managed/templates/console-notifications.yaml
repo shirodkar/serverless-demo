@@ -6,4 +6,4 @@ spec:
   backgroundColor: blue
   color: white
   location: BannerTop
-  text: 'MANAGED ({{.managedservername}})'
+  text: 'MANAGED ({{managedservername}})'
