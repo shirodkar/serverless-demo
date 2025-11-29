@@ -19,7 +19,7 @@ spec:
         server: "{{server}}"
       project: default
       source:
-        path: gitops/platform/platform-apps/infra
+        path: gitops/platform/platform-manifests/managed
         repoURL: 'https://github.com/shirodkar/serverless-demo.git'
         targetRevision: HEAD
       syncPolicy:
