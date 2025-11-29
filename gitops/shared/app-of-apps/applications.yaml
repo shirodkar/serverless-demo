@@ -5,8 +5,6 @@ metadata:
   namespace: shared-gitops
   labels:
     argocd.argoproj.io/sync-wave: "0"
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
