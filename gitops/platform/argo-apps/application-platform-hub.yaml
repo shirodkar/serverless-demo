@@ -11,8 +11,6 @@ spec:
     path: gitops/platform/platform-manifests/hub
     repoURL: 'https://github.com/shirodkar/serverless-demo.git'
     targetRevision: HEAD
-    directory:
-      recurse: true
   syncPolicy:
     automated:
       enabled: true
